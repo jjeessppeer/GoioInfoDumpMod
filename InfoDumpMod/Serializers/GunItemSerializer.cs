@@ -6,7 +6,7 @@ using Muse.Goi2.Entity;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace InfoDumpMod
+namespace InfoDumpMod.Serializers
 {
     public class GunItemConverter : JsonConverter<GunItem>
     {
@@ -17,9 +17,20 @@ namespace InfoDumpMod
             jo[nameof(value.Id)] = value.Id;
             jo["IconPath"] = value.GetIcon();
             jo["ItemType"] = "Gun";
+            jo["Usable"] = InfoDumpPatch.AllGuns.Contains(value.Id);
 
+            jo["GameType"] = (int)value.GameType;
+            jo["GameTypeText"] = value.GameType.ToString();
             jo["Params"] = JToken.FromObject(value.Params, serializer);
             jo["Size"] = GunItem.SizeName(value.Size);
+            jo["CooldownTime"] = value.CooldownTime;
+            jo["ReloadTime"] = value.ReloadTime;
+            jo["MaxAmmunition"] = value.MaxAmmunition;
+            jo["Range"] = value.GetEffectiveRange();
+            jo["MinYaw"] = value.MinYawDegrees;
+            jo["MaxYaw"] = value.MaxYawDegrees;
+            jo["MinPitch"] = value.MaxPitchDegrees;
+            jo["MaxPitch"] = value.MinPitchDegrees;
 
             jo["Damage"] = JToken.FromObject(value.DefaultAmmunition, serializer);
 

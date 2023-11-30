@@ -102,8 +102,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="InfoDumpMod.cs" />
-    <Compile Include="GunItemSerializer.cs" />
+    <Compile Include="Serializers\GunItemSerializer.cs" />
+    <Compile Include="Serializers\MapItemSerializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serializers\ShipSerializer.cs" />
+    <Compile Include="Serializers\SkillSerializer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
